@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class JwtCore {
     @Value("${testing.app.secret}")
     private String secret;
-    @Value("${testing.app.expirationMs")
+    @Value("${testing.app.expirationMs}")
     private Integer lifetime;
 
     public String generateToken(Authentication authentication) {
