@@ -37,12 +37,21 @@ public class JwtUtil {
     public boolean validateToken(String jwsString) {
         try {
             Jwts.parser()
-                    .verifyWith(key)
-                    .build()
-                    .parseSignedClaims(jwsString);
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(jwsString);
             return true;
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public String getUserNameFromJwtToken(String token) {
+        return Jwts.parser()
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .getSubject();
     }
 }
